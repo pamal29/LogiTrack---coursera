@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Caching.Memory;
+using System.Diagnostics;
 
 namespace LogiTrack.Controllers;
 
@@ -28,12 +29,20 @@ public class InventoryController : ControllerBase
 
         if (_cache.TryGetValue(cacheKey, out List<InventoryItem>? items))
         {
+            Console.WriteLine("Inventory returned from cache.");
             return items!;
         }
+
+        var stopwatch = Stopwatch.StartNew();
 
         items = await _context.InventoryItems
             .AsNoTracking()
             .ToListAsync();
+
+        stopwatch.Stop();
+
+        Console.WriteLine(
+            $"Database query took {stopwatch.ElapsedMilliseconds} ms");
 
         var cacheOptions = new MemoryCacheEntryOptions()
             .SetAbsoluteExpiration(TimeSpan.FromSeconds(30));
@@ -43,6 +52,7 @@ public class InventoryController : ControllerBase
         return items;
     }
 
+    
     [HttpGet("{id}")]
     public async Task<ActionResult<InventoryItem>> GetInventoryItem(int id)
     {

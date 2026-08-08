@@ -3,6 +3,7 @@ using LogiTrack.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using System.Diagnostics;
 
 namespace LogiTrack.Controllers;
 
@@ -21,10 +22,19 @@ public class OrderController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Order>>> GetOrders()
     {
-        return await _context.Orders
+        var stopwatch = Stopwatch.StartNew();
+
+        var orders = await _context.Orders
             .Include(o => o.Items)
             .AsNoTracking()
             .ToListAsync();
+
+        stopwatch.Stop();
+
+        Console.WriteLine(
+            $"Orders query took {stopwatch.ElapsedMilliseconds} ms");
+
+        return orders;
     }
 
     [HttpGet("{id}")]
