@@ -1,7 +1,13 @@
 using LogiTrack.Data;
 using Microsoft.EntityFrameworkCore;
+using LogiTrack.Models;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services
+    .AddIdentity<ApplicationUser, IdentityRole>()
+    .AddEntityFrameworkStores<LogiTrackContext>();
 
 builder.Services.AddControllers();
 
