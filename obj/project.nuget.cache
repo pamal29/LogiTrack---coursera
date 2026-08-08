@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "5G4ZC0UTOtY=",
+  "dgSpecHash": "nVZCib1zoic=",
   "success": true,
   "projectFilePath": "C:\\Users\\pamal\\Desktop\\LogiTrack\\LogiTrack.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\pamal\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\pamal\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\10.0.10\\microsoft.aspnetcore.identity.entityframeworkcore.10.0.10.nupkg.sha512",
     "C:\\Users\\pamal\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.5\\microsoft.aspnetcore.openapi.10.0.5.nupkg.sha512",
     "C:\\Users\\pamal\\.nuget\\packages\\microsoft.build.framework\\18.0.2\\microsoft.build.framework.18.0.2.nupkg.sha512",
     "C:\\Users\\pamal\\.nuget\\packages\\microsoft.codeanalysis.analyzers\\3.11.0\\microsoft.codeanalysis.analyzers.3.11.0.nupkg.sha512",
