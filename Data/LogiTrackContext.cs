@@ -5,7 +5,8 @@ namespace LogiTrack.Data;
 
 public class LogiTrackContext : DbContext
 {
-    public LogiTrackContext(DbContextOptions<LogiTrackContext> options)
+    public LogiTrackContext(
+        DbContextOptions<LogiTrackContext> options)
         : base(options)
     {
     }
